@@ -1,12 +1,14 @@
 import telebot
 import config
 from tpparser import get_transcription
-from telebot import types
+from telebot import types, logging
 
 API_TOKEN = config.token
 
 bot = telebot.TeleBot(API_TOKEN)
 
+logging.basicConfig(level=logging.CRITICAL,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 @bot.message_handler(commands=["ipa"])
 def handle_ipa(message):
